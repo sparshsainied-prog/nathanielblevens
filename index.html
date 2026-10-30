@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Nathaniel Blevens | The Steradian Gate</title>
+<meta name="description" content="The Steradian Gate, a science fiction adventure series about family, friendship and freedom, by Nathaniel Blevens.">
+<meta property="og:title" content="A homepage for Nathaniel Blevens, made by Sparsh Saini">
+<meta property="og:description" content="A homepage idea for Nathaniel Blevens and The Steradian Gate, made by Sparsh Saini. Not his official site.">
+<meta property="og:image" content="https://sparshsainied-prog.github.io/nathanielblevens/img/og.jpg">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230b1730'/><circle cx='16' cy='16' r='12' fill='none' stroke='%23b9bcc2' stroke-width='4'/><circle cx='16' cy='16' r='5' fill='%233aa0ff'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Exo+2:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/base.jpg">
+<style>
+/* From The Steradian Gate cover: the misty forest blue-green, the gate's worn steel and brass tabs,
+   the key's electric blue, the chrome-blue title. Orbitron is the cover's wide squared capitals; Exo 2 reads beside it. */
+:root {
+  --forest: #0b1730; --forest-2: #12233f; --moss: #1f3a44; --steel: #b9bcc2; --steel-2: #6d7178; --brass: #a99a5a;
+  --blue: #3aa0ff; --ice: #cfe6ff; --ink: #eef4fb;
+  --display: "Orbitron", system-ui, sans-serif; --text: "Exo 2", system-ui, sans-serif;
+  --gut: clamp(1rem, 5vw, 4rem);
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--forest); color: var(--ink); font-family: var(--text); font-size: 1.1rem; line-height: 1.6; overflow-x: hidden; }
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+h1, h2, h3 { font-family: var(--display); font-weight: 800; line-height: 1.1; margin: 0; text-transform: uppercase; letter-spacing: .06em; }
+h2 { color: #dbe8ff; text-shadow: 0 2px 0 #2a5fae; }
+.strip { position: relative; z-index: 30; background: var(--steel); color: var(--forest); font-size: .9rem; font-weight: 600; text-align: center; padding: .45rem var(--gut); }
+
+/* nav: a brass tab from the gate's ring */
+.tab { position: fixed; z-index: 40; right: 14px; top: 12px; background: linear-gradient(180deg, #c3b578, #8b7d42); color: #1b1a10; border: 0; clip-path: polygon(12% 0, 88% 0, 100% 100%, 0 100%); font: 700 .8rem var(--display); letter-spacing: .14em; padding: .65rem 1.3rem .55rem; cursor: pointer; }
+.nav { position: fixed; z-index: 50; inset: 0; background: rgba(11,23,48,.95); display: none; padding: 5rem var(--gut); }
+.nav.open { display: block; }
+.nav ol { list-style: none; margin: 0; padding: 0; }
+.nav a { display: block; padding: .8rem 0; font-family: var(--display); font-size: 1.15rem; letter-spacing: .08em; text-transform: uppercase; text-decoration: none; border-bottom: 1px solid rgba(185,188,194,.25); }
+.nav a:hover { color: var(--blue); }
+
+/* ---------- dialling the gate (pinned hero) ---------- */
+.hero { position: relative; height: 360vh; }
+.stage { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; background: var(--forest); }
+.cover { position: absolute; left: 50%; top: 64px; transform: translateX(-50%); width: min(calc(100vw - 24px), calc((100svh - 220px) * .625)); aspect-ratio: 1000 / 1600; overflow: hidden; background: var(--forest); }
+.cam { position: absolute; inset: 0; transform-origin: 50% 55.23%; will-change: transform; }
+.cam > * { position: absolute; max-width: none; will-change: transform, opacity; }
+.base { inset: 0; width: 100%; }
+.outer { left: 10%; top: 30.23%; width: 80%; }
+.inner { left: 30.625%; top: 43.13%; width: 38.75%; }
+.gem { left: 43.125%; top: 50.94%; width: 13.75%; opacity: 0; }
+.cap { position: absolute; left: var(--gut); right: var(--gut); bottom: 16px; height: 140px; }
+.cap > div { position: absolute; inset: 0; opacity: 0; will-change: opacity; }
+.cap .c1 { opacity: 1; }
+.cap p { margin: 0; }
+.cap .big { font-family: var(--display); font-weight: 700; font-size: 1.15rem; line-height: 1.35; letter-spacing: .04em; text-transform: uppercase; }
+.cap .sm { color: var(--ice); }
+.btn { display: inline-block; margin-top: .6rem; font: 700 .78rem var(--display); letter-spacing: .14em; text-transform: uppercase; text-decoration: none; color: #fff; background: linear-gradient(180deg, #4fb0ff, #1f6fd1); border: 1px solid var(--ice); border-radius: 3px; padding: .65rem 1rem; }
+.btn:hover { background: var(--ice); color: var(--forest); }
+.btn.ghost { background: none; border-color: var(--steel-2); }
+@media (min-width: 900px) {
+  .cover { left: auto; right: 9vw; top: 50%; transform: translateY(-50%); width: calc((100svh - 70px) * .625); }
+  .cap { left: var(--gut); right: auto; bottom: auto; top: 50%; height: 15rem; width: min(30rem, 38vw); transform: translateY(-50%); }
+  .cap .big { font-size: 1.7rem; }
+}
+
+/* ---------- sections ---------- */
+section.s { padding: clamp(3.5rem, 9vw, 6.5rem) var(--gut); }
+.s h2 { font-size: clamp(1.5rem, 5.5vw, 2.6rem); }
+.lede { max-width: 40rem; margin: 1rem 0 0; }
+.series { background: var(--forest-2); }
+.vol { display: grid; grid-template-columns: 36% 1fr; gap: 1.2rem; padding: 1.8rem 0; border-top: 1px solid rgba(185,188,194,.2); align-items: start; }
+.vol:first-of-type { margin-top: 1.6rem; }
+@media (min-width: 900px) { .vol { grid-template-columns: 14rem 1fr; gap: 2.5rem; max-width: 60rem; } }
+.vol img { border-radius: 3px; box-shadow: 0 0 40px rgba(58,160,255,.25); }
+.vol h3 { font-size: 1rem; color: var(--blue); }
+.vol h3 b { display: block; font-size: 1.35rem; color: #fff; margin-top: .2rem; }
+.vol p { margin: .6rem 0; font-size: 1rem; }
+.vol .buy { font-size: .9rem; color: var(--steel); }
+.vol .buy a { color: var(--ice); margin-right: .7rem; white-space: nowrap; }
+.local { background: var(--moss); }
+.local .plate { margin-top: 1.6rem; max-width: 34rem; border: 2px solid var(--steel-2); border-radius: 50% / 9%; padding: 2rem 1.6rem; text-align: center; background: radial-gradient(circle at 50% 0, rgba(58,160,255,.18), transparent 60%); }
+.local .d { font-family: var(--display); font-weight: 800; font-size: clamp(2.2rem, 10vw, 3.6rem); color: var(--blue); line-height: 1; }
+.local p { margin: .6rem 0 0; }
+.about { background: var(--forest-2); display: grid; gap: 1.6rem; }
+@media (min-width: 900px) { .about { grid-template-columns: 1fr 1.4fr; gap: 4rem; align-items: center; } }
+.about > * { min-width: 0; } .about img { border-radius: 4px; width: 100%; max-width: 26rem; }
+footer { background: var(--forest); color: var(--steel); text-align: center; font-size: .88rem; padding: 1.2rem var(--gut) 2.5rem; }
+@media (prefers-reduced-motion: reduce) { .hero { height: auto; } .stage { position: relative; height: 100svh; } }
+</style>
+</head>
+<body>
+<div class="strip">A homepage idea made by Sparsh Saini for Nathaniel Blevens. Not their official site.</div>
+<button class="tab" aria-expanded="false" aria-controls="nav">Menu</button>
+<nav class="nav" id="nav" aria-label="Sections">
+  <ol>
+    <li><a href="#top">The gate</a></li>
+    <li><a href="#series">The series</a></li>
+    <li><a href="#local">21 November, Woodneath</a></li>
+    <li><a href="#about">About Nathaniel</a></li>
+  </ol>
+</nav>
+
+<main>
+<section class="hero" id="top" aria-label="The Steradian Gate">
+  <div class="stage">
+    <div class="cover" role="img" aria-label="The cover of The Steradian Gate by Nathaniel Blevens: a steel and brass dial with a blue gem at its centre, set in a misty forest">
+      <div class="cam">
+        <img class="base" src="img/base.jpg" alt="" width="1000" height="1600">
+        <img class="outer" src="img/outer.webp" alt="" width="800" height="800">
+        <img class="inner" src="img/inner.webp" alt="" width="387" height="387">
+        <img class="gem" src="img/gem.webp" alt="" width="137" height="137">
+      </div>
+    </div>
+    <div class="cap">
+      <div class="c1"><p class="big">A mysterious artifact.<br>An evil regime.<br>A city lost to time.</p></div>
+      <div class="c2"><h1 class="big">The Steradian Gate</h1><p class="sm">A science fiction adventure series about family, friendship and freedom. Book three, Echoes, is out now.</p><a class="btn" href="https://www.amazon.com/dp/B0D1FZDSR1">Start with book one</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="s series" id="series">
+  <h2>Journey through the gate</h2>
+  <p class="lede">Ethan, Summer and the Resistance fight to save the people of Lunaria, one dimension at a time.</p>
+  <article class="vol">
+    <img src="img/book1.jpg" alt="The Steradian Gate cover" width="480" height="768" loading="lazy">
+    <div><h3>Book one <b>The Steradian Gate</b></h3>
+      <p>The adventure begins. A mysterious artifact, an evil regime, a city lost to time.</p>
+      <p class="buy">Print: <a href="https://kdsbooksls.com/book/9798990033719">KD's Books</a><a href="https://www.amazon.com/dp/B0D1FZDSR1">Amazon</a><a href="https://www.barnesandnoble.com/w/the-steradian-gate-nathaniel-blevens/1145455018?ean=9798990033719">B&amp;N</a> Ebook: <a href="https://www.amazon.com/dp/B0D157ZW1G">Kindle</a><a href="https://www.kobo.com/us/en/ebook/the-steradian-gate">Kobo</a> Audio: <a href="https://www.audible.com/pd/The-Steradian-Gate-Audiobook/B0F4498R78">Audible</a></p></div>
+  </article>
+  <article class="vol">
+    <img src="img/book2.jpg" alt="The Steradian Gate: Contagion cover" width="480" height="768" loading="lazy">
+    <div><h3>Book two <b>Contagion</b></h3>
+      <p>Not all contagions are biological. Ethan and Summer head to plague-ridden Alchemilla for the Alchemillan Steradian Key before the evil Kriva Rasturna can find it. Abandoned settlements, submerged laboratories and long-sunken shipwrecks wait for them.</p>
+      <p class="buy">Print: <a href="https://kdsbooksls.com/book/9798990033740">KD's Books</a><a href="https://www.amazon.com/dp/B0F43JNVD8">Amazon</a> Ebook: <a href="https://www.amazon.com/dp/B0F3KHC5PH">Kindle</a><a href="https://www.kobo.com/us/en/ebook/the-steradian-gate-contagion">Kobo</a> Audio: <a href="https://www.audible.com/pd/B0G1TNQNWP">Audible</a></p></div>
+  </article>
+  <article class="vol">
+    <img src="img/book3.jpg" alt="The Steradian Gate: Echoes cover" width="480" height="768" loading="lazy">
+    <div><h3>Book three <b>Echoes</b></h3>
+      <p>Three artifacts hidden across the dimensions form the Adjunct Machina, the means to unshackle the Revenant Army. The best lead takes Ethan's coalition into Helenium, a dimension deep behind enemy lines: an ancient evil, frozen wastelands and subterranean ruins holding long-forgotten secrets.</p>
+      <p class="buy">Print: <a href="https://kdsbooksls.com/book/9798990033788">KD's Books</a><a href="https://www.amazon.com/dp/B0HCMGDGP9">Amazon</a> Ebook: <a href="https://www.amazon.com/dp/B0H4CHYZ6J">Kindle</a><a href="https://books.apple.com/us/book/the-steradian-gate-echoes/id6797993921">Apple</a></p></div>
+  </article>
+</section>
+
+<section class="s local" id="local">
+  <h2>Meet him at the gate</h2>
+  <div class="plate">
+    <div class="d">Sat 21 Nov</div>
+    <p>Mid-Continent Public Library Local Author Fair, Woodneath Library Center, 1 to 4 pm. Look for him with the authors for teens.</p>
+  </div>
+  <p class="lede">Print copies of all three books are also at KD's Books.</p>
+</section>
+
+<section class="s about" id="about">
+  <img src="img/nathaniel.jpg" alt="Nathaniel Blevens in a cap, smiling, on a wooded hillside" width="800" height="489" loading="lazy">
+  <div>
+    <h2>About Nathaniel</h2>
+    <p class="lede">Nathaniel Blevens is a husband and father who writes suspenseful science fiction adventure about family, friendship and freedom. His sense of adventure comes from growing up in the Pacific Northwest. Outside of writing he's out hiking with his family, introducing his kids to the pop culture of the 80s and 90s, and cracking dad jokes for the eye rolls.</p>
+    <p class="lede">He's always had a project going: intricate displays, board games, retro video game art, and now stories.</p>
+    <p><a class="btn ghost" href="https://www.instagram.com/thesteradiangate/">Instagram</a> <a class="btn ghost" href="http://amazon.com/author/nathaniel_blevens">Amazon author page</a></p>
+  </div>
+</section>
+</main>
+<footer>A mockup made by Sparsh Saini for Nathaniel Blevens. Not affiliated, not live.</footer>
+
+<script>
+(() => {
+  const m = document.querySelector('.tab'), n = document.getElementById('nav');
+  m.addEventListener('click', () => { const o = n.classList.toggle('open'); m.setAttribute('aria-expanded', o); });
+  n.addEventListener('click', e => { if (e.target.closest('a')) { n.classList.remove('open'); m.setAttribute('aria-expanded', false); } });
+  const hero = document.querySelector('.hero'), q = s => document.querySelector(s);
+  const cam = q('.cam'), outer = q('.outer'), inner = q('.inner'), gem = q('.gem'), c1 = q('.c1'), c2 = q('.c2');
+  const cl = (x, a, b) => Math.min(1, Math.max(0, (x - a) / (b - a)));
+  const ease = t => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+  let top = 0, span = 1;
+  const measure = () => { top = hero.offsetTop; span = hero.offsetHeight - innerHeight; };
+  const draw = p => {
+    // the two rings counter-turn like a combination, lock (with a small overshoot), then the gem fires and the camera pulls out
+    const d = cl(p, 0, .62), e = ease(d), over = Math.sin(cl(p, .55, .68) * Math.PI) * 4;
+    outer.style.transform = `rotate(${-150 * (1 - e) + over}deg)`;
+    inner.style.transform = `rotate(${230 * (1 - e) - over * 1.5}deg)`;
+    const z = ease(cl(p, .45, .9));
+    cam.style.transform = `scale(${1.75 - .75 * z})`;
+    const g = cl(p, .6, .72), g2 = cl(p, .72, .95);
+    gem.style.opacity = (g * (1 - .6 * g2)).toFixed(3); gem.style.transform = `scale(${1 + .9 * g - .9 * g2})`;
+    const k = cl(p, .6, .75); c1.style.opacity = 1 - k; c2.style.opacity = k; c2.style.pointerEvents = k > .5 ? 'auto' : 'none';
+  };
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) { draw(1); return; }
+  measure(); addEventListener('resize', measure);
+  let last = -1;
+  const tick = () => { const p = Math.min(1, Math.max(0, (scrollY - top) / span)); if (p !== last) { draw(p); last = p; } requestAnimationFrame(tick); };
+  draw(0); requestAnimationFrame(tick);
+})();
+</script>
+</body>
+</html>
